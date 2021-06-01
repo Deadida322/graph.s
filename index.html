@@ -1,6 +1,9 @@
 <html>
 <head>
   <link rel="preconnect" href="https://fonts.gstatic.com">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -20,25 +23,34 @@
     <section class="graph">
       <div class="canvas_wrapper">
         <div class="canvas_info">
-          <p class="canvas_info_txt">
+          <p class="canvas_info_txt desktop">
             Здесь отобразится график, когда вы введёте значения
             <br>
             <span class="yellow">Сtr+s</span> - Чтобы сохранить изображение
+          </p>
+          <p class="canvas_info_txt mobile">
+            Используйте зум для приближения графика
           </p>
         </div>
         <canvas id="popChart" width="600" height="400"></canvas>
       </div>
       <form action="">
           <label for="">Выражение</label>
-          <input value="x^2" class='expression' type="text">
+          <div class="input_wrapper">
+            <input value="x^2" class='expression' type="text">
+            <i class="material-icons delete">close</i>
+          </div>
           <i class="material-icons plus">add_circle_outline</i>
           <input type="button" class="sub" value="Отрисовать">
       </form>
     </section>
-    
+    <section class="menu">
+      <h3>Дополнительные возможности</h3>
+    </section>
   </div>
   <script src="script.js">
   
 </script>
 </body>
 </html>
+

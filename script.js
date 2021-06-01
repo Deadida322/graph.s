@@ -1,7 +1,11 @@
 function sourceFunction(x, F) {
   return (eval(F))
 }
-
+function elementDelete(){
+  let e = window.event
+  $(e.target).parent().remove()   
+  console.log($(e.target)) 
+}
 let data = []
 var ticksArray = [];
 let datapoints = [];
@@ -20,21 +24,9 @@ function replacer(to_replace) {
     .replaceAll('abs', 'Math.abs')
 }
 let colors = ['#cdc5c2','#332d2a','#B22222','#32CD32','#FFD700','#8B008B','#000000','#FF00FF', '#696969','#191970','#7FFFD4','#BDB76B','#2F4F4F','#000080']
-function convertCanvasToImage(canvas, callback) {
 
-  var image = new Image();
- 
-  image.onload = function() {
-    image.src = canvas.toDataURL("image/png");
-    image.crossOrigin = "anonymous";
-  }
-
-  callback(image);
-
-}
 
 $(() => {
-
   var popCanvas = $("#popChart");
   var popCanvas = document.getElementById("popChart");
   var popCanvas = document.getElementById("popChart").getContext("2d");
@@ -95,7 +87,12 @@ $(() => {
   };
   var barChart = ''
   $('.plus').on('click', ()=>{
-    $('.plus').before('<input value="x^2" class="expression" type="text">')    
+    $('.plus').before("<div class='input_wrapper'><input value='x^2' class='expression' type='text'><i class='material-icons delete'>close</i></div>")    
+    document.querySelectorAll('.delete').forEach((element, index) => {
+      if (index != 0){
+        element.onclick=elementDelete
+      }
+    });
   })
   document.onkeydown = (e)=>{
     if ( e.ctrlKey && ( e.which === 83 ) ) {
@@ -113,6 +110,7 @@ $(() => {
   }
 
   $('.sub').on('click', () => {
+    $('.sub').val('Перерисовать')
     $('canvas').remove();
     $('.canvas_info').remove();
     $('.canvas_wrapper').append('<canvas id="popChart"></canvas>')
@@ -144,9 +142,7 @@ $(() => {
       }
       for (let i = min; i <= max; i += step) {
         data.labels.push(i.toFixed(2));
-      }
-      for (let i = min; i <= max; i += step) {
-        ticksArray.push(i)
+        ticksArray.push(i.toFixed(2))
       }
     }
   })
