@@ -1,0 +1,44 @@
+<html>
+<head>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.2.1/chart.min.js" 
+    integrity="sha512-tOcHADT+YGCQqH7YO99uJdko6L8Qk5oudLN6sCeI4BQnpENq6riR6x9Im+SGzhXpgooKBRkPsget4EOoH5jNCw==" 
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="navbar">
+    <nav class="header">
+      Graph.s
+    </nav>
+  </div>
+  <div class="wrapper">
+    <section class="graph">
+      <div class="canvas_wrapper">
+        <div class="canvas_info">
+          <p class="canvas_info_txt">
+            Здесь отобразится график, когда вы введёте значения
+            <br>
+            <span class="yellow">Сtr+s</span> - Чтобы сохранить изображение
+          </p>
+        </div>
+        <canvas id="popChart" width="600" height="400"></canvas>
+      </div>
+      <form action="">
+          <label for="">Выражение</label>
+          <input value="x^2" class='expression' type="text">
+          <i class="material-icons plus">add_circle_outline</i>
+          <input type="button" class="sub" value="Отрисовать">
+      </form>
+    </section>
+    
+  </div>
+  <script src="script.js">
+  
+</script>
+</body>
+</html>
