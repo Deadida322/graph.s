@@ -21,18 +21,20 @@
   </div>
   <div class="wrapper">
     <section class="graph">
-      <div class="canvas_wrapper">
-        <div class="canvas_info">
-          <p class="canvas_info_txt desktop">
-            Здесь отобразится график, когда вы введёте значения
-            <br>
-            <span class="yellow">Сtr+s</span> - Чтобы сохранить изображение
-          </p>
-          <p class="canvas_info_txt mobile">
-            Используйте зум для приближения графика
-          </p>
+      <div class="wrapper_wrapper">
+        <div class="canvas_wrapper">
+          <div class="canvas_info">
+            <p class="canvas_info_txt desktop">
+              Здесь отобразится график, когда вы введёте значения
+              <br>
+              <span class="yellow">Сtr+s</span> - Чтобы сохранить изображение
+            </p>
+            <p class="canvas_info_txt mobile">
+              Используйте зум для приближения графика
+            </p>
+          </div>
+          <canvas id="popChart" width="600" height="400"></canvas>
         </div>
-        <canvas id="popChart" width="600" height="400"></canvas>
       </div>
       <form action="">
           <label for="">Выражение</label>
@@ -45,7 +47,12 @@
       </form>
     </section>
     <section class="menu">
-      <h3>Дополнительные возможности</h3>
+      <h3>Сохранить</h3>
+      <div class="icons">
+        <i class="save material-icons">
+          save_alt
+        </i>
+      </div>
     </section>
   </div>
   <script src="script.js">

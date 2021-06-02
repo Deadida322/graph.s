@@ -6,6 +6,16 @@ function elementDelete(){
   $(e.target).parent().remove()   
   console.log($(e.target)) 
 }
+function saveCanvas(){
+  var cvs = document.getElementById("popChart");
+  var image = new Image();
+  image.src = cvs.toDataURL("image/jpg");
+  image.crossOrigin = "anonymous";
+  var link = document.createElement("a");
+  link.href = image.src;
+  link.download = "graphs.jpg";
+  link.click();
+}
 let data = []
 var ticksArray = [];
 let datapoints = [];
@@ -94,18 +104,14 @@ $(() => {
       }
     });
   })
+  $('.save').click(()=>{
+    saveCanvas()
+  })
   document.onkeydown = (e)=>{
     if ( e.ctrlKey && ( e.which === 83 ) ) {
       e.preventDefault()
-      var cvs = document.getElementById("popChart");
-      var image = new Image();
-      image.src = cvs.toDataURL("image/jpg");
-      image.crossOrigin = "anonymous";
-      var link = document.createElement("a");
-      link.href = image.src;
-      link.download = "graphs.jpg";
-      link.click();
-      return false;
+      saveCanvas()
+      return false
     }
   }
 

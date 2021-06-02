@@ -32,7 +32,7 @@ input{
     width: 80%;
 }
 .canvas_wrapper{
-    width: 80%;
+    width: 100%;
     position: relative;
     border-radius: 8px;
 }
@@ -54,7 +54,7 @@ input{
     border-radius: 8px;
     border: 1px solid rgb(40, 96, 141);
     background-color: white;
-    max-height: 550px; 
+    max-height: 450px; 
 }
 .navbar{
     padding: 0 2em;
@@ -128,6 +128,18 @@ input{
     cursor: pointer;
     transition: all .2s ease-in;
 }
+.menu{
+    display: flex;
+    align-items: center;
+}
+.wrapper_wrapper{
+    width: 80%;
+}
+.icons{
+    display: flex;
+    align-items: center;
+    text-align: center;
+}
 .material-icons:hover{
     transform: scale(1.1);
 }
@@ -151,13 +163,13 @@ input{
     .navbar{
         width: 97%;
     }
-    #popChart{
-        max-height: 450px; 
-    }
 }
 @media screen and (max-width: 800px) {
     .wrapper{
         width: 100%;
+    }
+    #popChart{
+        max-height: 550px; 
     }
     .graph{
         flex-direction: column;
@@ -165,9 +177,13 @@ input{
         justify-content:unset;
     }
     .canvas_wrapper{
+        height: 100%; 
         width:300%;
-        transform: scale(.33);
-        margin: -30% 0%
+        overflow: scroll;
+    }
+    .wrapper_wrapper{
+        width: 98%;
+        overflow: scroll;
     }
     .navbar{
         width: 100%;
