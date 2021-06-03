@@ -40,6 +40,9 @@ $('.modal').on('click', function(e){
     $('.modal').removeClass('show_modal')
   }
 })
+$('.modal_close').on('click', function(e){
+  $('.modal').removeClass('show_modal')
+})
 
 $(() => {
   
