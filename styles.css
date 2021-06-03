@@ -286,6 +286,7 @@ input{
         width: 100%;
     }
     #popChart{
+        min-height: 450px;
         max-height: 550px; 
     }
     .graph{
