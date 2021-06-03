@@ -270,7 +270,7 @@ input{
         width: 97%;
     }
 }
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 850px) {
     .modal_body{
         width: 99%;
     }
