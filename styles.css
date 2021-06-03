@@ -1,8 +1,24 @@
+/*
+* Prefixed by https://autoprefixer.github.io
+* PostCSS: v7.0.29,
+* Autoprefixer: v9.7.6
+* Browsers: last 4 version
+*/
+
 body{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     font-family: 'Roboto', sans-serif;
     font-weight: 300;
 }
@@ -12,23 +28,42 @@ h3{
 *{
     margin: 0;
     padding: 0%;
-    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
 }
 form{
     margin: 2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 input{
     margin: 1em;
 }
+.save_as{
+    display: flex;
+    align-items: center;
+}
 .wrapper{
     padding: 1em;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     background-color: rgb(247, 245, 245);
-    align-items: center;
-    flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     width: 80%;
 }
 .canvas_wrapper{
@@ -46,7 +81,8 @@ input{
     height: 100%;
     margin: 0;
     padding: 0;
-    filter: drop-shadow(4px 7px 5px #000000);
+    -webkit-filter: drop-shadow(4px 7px 5px #000000);
+            filter: drop-shadow(4px 7px 5px #000000);
 }
 #popChart{
     width: 100% !important;
@@ -58,29 +94,45 @@ input{
 }
 .navbar{
     padding: 0 2em;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
     width: 82%;
     border-radius: 0 0 8px 8px;
     height: 4em;
     z-index: 99;
     background-color: rgb(40, 96, 141);
-    box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.255), -6px -3px 12px -4px rgba(255, 255, 255, 1);
+    -webkit-box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.255), -6px -3px 12px -4px rgba(255, 255, 255, 1);
+            box-shadow: 3px 3px 12px 3px rgba(0, 0, 0, 0.255), -6px -3px 12px -4px rgba(255, 255, 255, 1);
 
 }
 .graph{
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
 }
 .canvas_info{
     position: absolute;
     left: 0;
     top: 0;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     width: 100%;
     height: 100%;
     text-align: center;
@@ -91,31 +143,37 @@ input{
     font-weight: 500;
 }
 .none{
-    display: none;
+    display: none !important;
 }
 .expression{
     outline: none;
     border-radius: 4px;
     padding: .5em 1em;
     border: 1px solid rgb(40, 96, 141);
+    background: -o-linear-gradient(305deg, #e2e1e1, #FFFFFF);
     background: linear-gradient(145deg, #e2e1e1, #FFFFFF);
-    box-shadow: inset 3px 10px 6px #d9dadec9, inset -10px -10px 6px #FFFFFF;
+    -webkit-box-shadow: inset 3px 10px 6px #d9dadec9, inset -10px -10px 6px #FFFFFF;
+            box-shadow: inset 3px 10px 6px #d9dadec9, inset -10px -10px 6px #FFFFFF;
 }
-.sub{
+.sub, .look_full{
     padding: 1em;
     outline: none;
     border: 1px solid #ffdf4f00;
     padding: 1em;
     background: #ffdf4f;
     border-radius: 8px;
-    box-shadow: 8px 8px 9px #D9DADE, -8px -8px 9px #FFFFFF;
+    -webkit-box-shadow: 8px 8px 9px #D9DADE, -8px -8px 9px #FFFFFF;
+            box-shadow: 8px 8px 9px #D9DADE, -8px -8px 9px #FFFFFF;
     cursor: pointer;
+    -webkit-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
     transition: all .2s ease-in;
 }
-.sub:hover{
+.sub, .look_full:hover{
     border: 1px solid #ffdf4f;
     background: transparent;
-    box-shadow: none;
+    -webkit-box-shadow: none;
+            box-shadow: none;
     cursor: pointer;
 }
 .plus:hover{
@@ -126,35 +184,83 @@ input{
 }
 .material-icons{
     cursor: pointer;
+    -webkit-transition: all .2s ease-in;
+    -o-transition: all .2s ease-in;
     transition: all .2s ease-in;
 }
 .menu{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+        flex-direction: column;
+            align-items: center;
 }
 .wrapper_wrapper{
     width: 80%;
 }
 .icons{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
     text-align: center;
 }
 .material-icons:hover{
-    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+            transform: scale(1.1);
 }
 .input_wrapper{
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    align-items: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
 }
 .menu{
     padding: 1em 0em;
 }
 .desktop{
-    display: block;
+    display: flex
 }
 .mobile{
+    display: none !important;
+}
+.no_show{
+    display: none !important;
+}
+.canvas_info_txt{
+    display: block;
+}
+.modal{
+    background-color: #16161667;
+    top: 0;
+    left: 0;
+    z-index: 999999;
     display: none;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+}
+.show_modal{
+    display: flex;
+}
+.modal_body{
+    width: 85%;
+    height: auto;
+    padding: 0em;
+    background-color: rgb(239, 254, 255);
+    border-radius: 8px;
+}
+.modal_image{
+    width: 100%;
 }
 @media screen and (max-width: 1600px) {
     .wrapper{
@@ -165,6 +271,17 @@ input{
     }
 }
 @media screen and (max-width: 800px) {
+    .modal_body{
+        width: 99%;
+    }
+    .look_full{
+        display: block;
+        position: absolute;
+        top: -3.5em;
+        opacity: .8;
+        background: #ffdf4fa8;
+        padding: .5em;
+    }
     .wrapper{
         width: 100%;
     }
@@ -172,16 +289,26 @@ input{
         max-height: 550px; 
     }
     .graph{
-        flex-direction: column;
-        align-items: center;
-        justify-content:unset;
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+            -ms-flex-direction: column;
+                flex-direction: column;
+        -webkit-box-align: center;
+            -ms-flex-align: center;
+                align-items: center;
+        -webkit-box-pack:unset;
+            -ms-flex-pack:unset;
+                justify-content:unset;
     }
     .canvas_wrapper{
         height: 100%; 
+        min-height: 450px;
         width:300%;
         overflow: scroll;
     }
     .wrapper_wrapper{
+        min-height: 450px;
+        min-width: 350px;
         width: 98%;
         overflow: scroll;
     }
@@ -192,13 +319,19 @@ input{
         display: none;
     }
     .mobile{
-        display: block;
-        font-size: 3em;
+        display: block !important;
     }
     .wrapper{
         padding: .1em;
     }
     form{
+        position: relative;
         margin: .3em;
+    }
+    .canvas_info_txt{
+        display: none;
+    }
+    .no_show{
+        display: none !important;
     }
 }

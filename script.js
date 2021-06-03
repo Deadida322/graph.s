@@ -34,9 +34,15 @@ function replacer(to_replace) {
     .replaceAll('abs', 'Math.abs')
 }
 let colors = ['#cdc5c2','#332d2a','#B22222','#32CD32','#FFD700','#8B008B','#000000','#FF00FF', '#696969','#191970','#7FFFD4','#BDB76B','#2F4F4F','#000080']
-
+$('.modal').on('click', function(e){
+  console.log(this, e.target)
+  if (e.target==this){
+    $('.modal').removeClass('show_modal')
+  }
+})
 
 $(() => {
+  
   var popCanvas = $("#popChart");
   var popCanvas = document.getElementById("popChart");
   var popCanvas = document.getElementById("popChart").getContext("2d");
@@ -62,6 +68,7 @@ $(() => {
       interaction: {
         intersect: false,
       },
+      radius: 0,
       scales: {
         x: {
           display: true,
@@ -114,8 +121,23 @@ $(() => {
       return false
     }
   }
-
+  let show_full = ()=>{
+    $('.modal').addClass('show_modal')
+    var cvs = document.getElementById("popChart");
+    var image = new Image();
+    image.src = cvs.toDataURL("image/jpg");
+    image.crossOrigin = "anonymous";
+    $('.modal_image').attr('src', image.src )
+  }
+  $('.look_full').on('click',()=>{
+    show_full()
+  })
+  $('.show_desctop').on('click',()=>{
+    show_full()
+  })
   $('.sub').on('click', () => {
+    $('.look_full').removeClass('no_show')
+    $('.show_desctop').removeClass('no_show')
     $('.sub').val('Перерисовать')
     $('canvas').remove();
     $('.canvas_info').remove();

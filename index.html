@@ -14,6 +14,13 @@
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+  <div class="modal">
+    <div class="modal_body">
+      <div class="modal_img">
+        <img src="" alt="" class="modal_image">
+      </div>
+    </div>
+  </div>
   <div class="navbar">
     <nav class="header">
       Graph.s
@@ -25,9 +32,9 @@
         <div class="canvas_wrapper">
           <div class="canvas_info">
             <p class="canvas_info_txt desktop">
-              Здесь отобразится график, когда вы введёте значения
-              <br>
-              <span class="yellow">Сtr+s</span> - Чтобы сохранить изображение
+              Здесь отобразится график, когда вы введёте значения<br>
+
+              <span class="yellow">Сtr+s</span>- Чтобы сохранить изображение
             </p>
             <p class="canvas_info_txt mobile">
               Используйте зум для приближения графика
@@ -37,6 +44,7 @@
         </div>
       </div>
       <form action="">
+          <div class="no_show mobile look_full">Просмотреть целиком</div>
           <label for="">Выражение</label>
           <div class="input_wrapper">
             <input value="x^2" class='expression' type="text">
@@ -47,11 +55,24 @@
       </form>
     </section>
     <section class="menu">
-      <h3>Сохранить</h3>
-      <div class="icons">
-        <i class="save material-icons">
-          save_alt
-        </i>
+      <div class="save_as">
+        <h3>Сохранить</h3>
+        <div class="icons">
+          <i class="save material-icons">
+            save_alt
+          </i>
+        </div>
+      </div>
+      
+      <div class="desktop save_as show_desctop no_show">
+        <h3>
+          Просмотреть целиком 
+        </h3>
+        <div class="icons">
+          <i class="material-icons">
+            fullscreen
+          </i>
+        </div>
       </div>
     </section>
   </div>
