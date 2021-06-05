@@ -17,6 +17,11 @@ function saveCanvas(){
   link.click();
 }
 let data = []
+let min = -5;
+let max = 5;
+let zoom = 0;
+let step = 0.1;
+let offset = 0;
 var ticksArray = [];
 let datapoints = [];
 function createF(a, exp) {
@@ -35,7 +40,6 @@ function replacer(to_replace) {
 }
 let colors = ['#cdc5c2','#332d2a','#B22222','#32CD32','#FFD700','#8B008B','#000000','#FF00FF', '#696969','#191970','#7FFFD4','#BDB76B','#2F4F4F','#000080']
 $('.modal').on('click', function(e){
-  console.log(this, e.target)
   if (e.target==this){
     $('.modal').removeClass('show_modal')
   }
@@ -45,7 +49,6 @@ $('.modal_close').on('click', function(e){
 })
 
 $(() => {
-  
   var popCanvas = $("#popChart");
   var popCanvas = document.getElementById("popChart");
   var popCanvas = document.getElementById("popChart").getContext("2d");
@@ -61,6 +64,9 @@ $(() => {
     type: 'line',
     data: data,
     options: {
+      animation:{
+        duration: 0,
+      },
       responsive: true,
       plugins: {
         title: {
@@ -139,6 +145,28 @@ $(() => {
     show_full()
   })
   $('.sub').on('click', () => {
+    reload()
+  })
+  $('.offset_less').on('click', function(e){
+    console.log((Math.abs(min)+Math.abs(max))/10)
+    offset-=(Math.abs(min+offset+zoom)+Math.abs(min-offset+zoom))/50;
+    reload()
+  })
+  $('.offset_more').on('click', function(e){
+    offset+=(Math.abs(min+offset+zoom)+Math.abs(min-offset+zoom))/50;
+    reload()
+  })
+  $('.zoom_in').on('click', function(e){
+    if(step>0.01) step/=2
+    zoom += 0.5
+    reload()
+  })
+  $('.zoom_out').on('click', function(e){
+    if(step<=0.1) step*=2
+    zoom -= 0.5
+    reload()
+  })
+  let reload = () => {
     $('.look_full').removeClass('no_show')
     $('.show_desctop').removeClass('no_show')
     $('.sub').val('Перерисовать')
@@ -154,7 +182,7 @@ $(() => {
     }
     data.datasets = []
     data.labels = []
-    generator(-5, 5, 0.1, exp)
+    generator(min+offset+zoom, max+offset-zoom, step, exp)
     barChart = new Chart(popCanvas, config);
     function generator(min = -5, max = 5, step = 0.1, F) {
       let y = min;
@@ -176,7 +204,5 @@ $(() => {
         ticksArray.push(i.toFixed(2))
       }
     }
-  })
-
-
+  }
 })

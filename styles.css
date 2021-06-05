@@ -169,7 +169,7 @@ input{
     -o-transition: all .2s ease-in;
     transition: all .2s ease-in;
 }
-.sub, .look_full:hover{
+.sub:hover, .look_full:hover{
     border: 1px solid #ffdf4f;
     background: transparent;
     -webkit-box-shadow: none;
