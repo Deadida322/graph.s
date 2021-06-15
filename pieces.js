@@ -31,6 +31,21 @@ let offset = 0;
 var ticksArray = [];
 let datapoints = [];
 
+function findEdges(minArray, maxArray){
+  let mins = []
+  let maxs = []
+
+  for(let i = 0; i<minArray.length; i++){
+    mins.push(parseInt($(minArray[i]).val()))
+  }
+  for(let i = 0; i<maxArray.length; i++){
+    maxs.push(parseInt($(maxArray[i]).val()))
+  }
+  console.log(mins, maxs)
+  console.log(Math.min(...mins), Math.max(...maxs))
+  return [Math.min(...mins), Math.max(...maxs), mins, maxs]
+}
+
 
 function createF(a, exp) {
   return eval(exp)
@@ -48,8 +63,18 @@ function replacer(to_replace) {
     .replaceAll('sqrt', 'Math.sqrt')
     .replaceAll('abs', 'Math.abs')
 }
+let elemToAppend = `
+  <div class='input_wrapper'>
+    <input value='x^2' class='expression' type='text'>
+    <i class='material-icons delete'>close</i>
+  </div>
+  <div class="input_wrapper edges">
+    <input value="-5" class='since' type="text">
+    <input value="5" class='to' type="text">
+  </div>`
 
-
+let mainSince = -5;
+let mainTo = 5;
 let colors = ['#cdc5c2','#332d2a','#B22222','#32CD32','#FFD700','#8B008B','#000000','#FF00FF', '#696969','#191970','#7FFFD4','#BDB76B','#2F4F4F','#000080']
 
 
@@ -135,7 +160,7 @@ $(() => {
   var barChart = ''
 
   $('.plus').on('click', ()=>{
-    $('.plus').before("<div class='input_wrapper'><input value='x^2' class='expression' type='text'><i class='material-icons delete'>close</i></div>")    
+    $('.plus').before(elemToAppend)    
     document.querySelectorAll('.delete').forEach((element, index) => {
       if (index != 0){
         element.onclick=elementDelete
@@ -201,6 +226,7 @@ $(() => {
     reload()
   })
 
+
   
   let reload = () => {
     $('.look_full').removeClass('no_show')
@@ -212,13 +238,18 @@ $(() => {
     popCanvas = $("#popChart");
     popCanvas = document.getElementById("popChart").getContext("2d");
     let exp = Array.from($('.expression'))
+    let sinceArray = Array.from($('.since'))
+    let toArray = Array.from($('.to'))
+    let [mainSince, mainTo, sinceVals, toVals] = findEdges(sinceArray, Array.from($('.to')))
+    console.log(mainSince, mainTo)
+    console.log(sinceArray, toArray)
     let expList = []
     for (let i of exp) {
       expList.push(replacer($(i).val()))
     }
     data.datasets = []
     data.labels = []
-    generator(min+offset+zoom, max+offset-zoom, step, exp)
+    generator(mainSince+offset+zoom, mainTo+offset-zoom, step, exp)
     barChart = new Chart(popCanvas, config);
     function generator(min = -5, max = 5, step = 0.1, F) {
       let y = min;
@@ -229,10 +260,19 @@ $(() => {
           borderColor: colors[k],
           borderWidth: 2
         })
+        
         for (let y = min; y < max; y += step) {
-          data.datasets[k].data.push(
-            sourceFunction(y, expList[k]),
-          )
+          if(y>=sinceVals[k]-step && y<=toVals[k]+step){
+              data.datasets[k].data.push(
+              sourceFunction(y, expList[k]),
+            )
+          }
+          else{
+            data.datasets[k].data.push(
+              null
+            )
+          }
+         
         }
       }
       for (let i = min; i <= max; i += step) {

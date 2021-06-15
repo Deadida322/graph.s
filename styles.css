@@ -145,7 +145,7 @@ input{
 .none{
     display: none !important;
 }
-.expression{
+.since, .to, .expression{
     outline: none;
     border-radius: 4px;
     padding: .5em 1em;
@@ -154,6 +154,13 @@ input{
     background: linear-gradient(145deg, #e2e1e1, #FFFFFF);
     -webkit-box-shadow: inset 3px 10px 6px #d9dadec9, inset -10px -10px 6px #FFFFFF;
             box-shadow: inset 3px 10px 6px #d9dadec9, inset -10px -10px 6px #FFFFFF;
+}
+.since, .to{
+    width: 20%;
+}
+.edges{
+    align-items: center;
+    justify-content: center;
 }
 .sub, .look_full{
     padding: 1em;
